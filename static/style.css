@@ -1,0 +1,42 @@
+header{
+    background-color: rgb(88, 84, 163);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    line-height: 100px;
+}
+
+footer{
+    background-color: rgb(104, 104, 104);
+    color: rgb(255, 255, 255);
+    line-height: 100px;
+    text-align: center;
+}
+textarea{
+    display: block;
+    margin: auto;
+}
+input[name="save"]{
+    display: block;
+    margin: auto;
+}
+p{
+    white-space: pre-wrap;
+    border: solid 1px #000000;
+    width: 500px;
+    margin: auto;
+}
+div{
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+a[name="question_update"]{
+    display: block;
+    text-align: center;
+}
+h1{
+    text-align: center;
+}

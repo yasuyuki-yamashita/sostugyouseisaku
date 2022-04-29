@@ -1,0 +1,18 @@
+{% extends"base.html" %}
+{% block content %}
+
+<a name="question_update" href="/add">質問を投稿する</a>
+
+<h1>！回答募集中！</h1>
+
+<!-- Pythonから受け取ったデータ分リスト作成 for文 -->
+{% for item in tpl_task_list %}
+<p style="width:500px; height:100px; overflow:auto;">{{item["tpl_task"]}}</p>
+<div>
+    <a name="answer_btn" href="/answer/{{item['tpl_id']}}">回答する</a>
+    <form action="/delete/{{item['tpl_id']}}" method="post">
+        <input type="submit" value="削除">
+    </form>
+</div>
+{% endfor %}
+{% endblock %}

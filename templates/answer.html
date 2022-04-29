@@ -1,0 +1,11 @@
+{% extends"base.html" %}
+{% block content %}
+
+<p>{{tpl_task['tpl_task']}}</p>
+
+<form action="/answer" method="post">
+    <p name="number">{{tpl_task['tpl_id']}}</p>
+    <textarea name="tpl_answer" id="" cols="70" rows="10" warp="hard" placeholder="こちらに回答内容を入力してください。"></textarea>
+    <input type="submit" name="save" value="送信">
+</form>
+{% endblock %}
