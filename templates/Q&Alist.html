@@ -6,8 +6,12 @@
 <!-- Pythonから受け取ったデータ分リスト作成 for文 -->
 {% for item in tpl_task_list %}
 <p style="width:500px; height:100px; overflow:auto;">{{item["tpl_task"]}}</p>
-{% endfor %}
-{% for item in tpl_answer_list %}
-<p style="width:500px; height:100px; overflow:auto;">{{item["tpl_answer"]}}</p>
+<div>
+    <a name="answer_btn" href="/aanswer/{{item['tpl_id']}}">回答する</a>
+    <a name="answer_btn" href="/alist/{{item['tpl_id']}}">回答一覧</a>
+    <form action="/QAdelete/{{item['tpl_id']}}" method="post">
+        <input type="submit" value="削除">
+    </form>
+</div>
 {% endfor %}
 {% endblock %}
