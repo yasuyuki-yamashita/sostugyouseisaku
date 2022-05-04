@@ -1,16 +1,25 @@
 {% extends"base.html" %}
 {% block content %}
 
-<h1>回答一覧</h1>
+<h1 class="h1_center">回答一覧</h1>
 
 <!-- Pythonから受け取ったデータ分リスト作成 for文 -->
 {% for item in tpl_task_list %}
-<p style="width:500px; height:100px; overflow:auto;">{{item["tpl_answer"]}}</p>
-<div>
-    <!-- <a name="answer_btn" href="/aanswer/{{item['tpl_id']}}">回答する</a> -->
-    <form action="/adelete/{{item['tpl_id']}}" method="post">
-        <input type="submit" value="削除">
-    </form>
-</div>
+<div class="accordions">
+    <dl class="accordion">
+      <dt class="accordion__title">
+        <button class="accordion__btn" type="button"> 
+            <p class="list">{{item["tpl_answer"]}}</p>
+        </button>
+      </dt>
+      <dd class="accordion__body">
+        <p class="accordion__text">
+            <div class="list_div">
+                <form action="/adelete/{{item['tpl_id']}}" method="post">
+                    <input type="submit" value="削除">
+                </form>
+            </div>
+        </p>
+      </dd>
 {% endfor %}
 {% endblock %}

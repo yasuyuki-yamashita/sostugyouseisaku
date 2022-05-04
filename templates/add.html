@@ -1,7 +1,8 @@
 {% extends"base.html" %}
 {% block content %}
-    <form action="/add" method="post">
-        <textarea name="tpl_task" id="" cols="70" rows="10" warp="hard" placeholder="こちらに質問内容を入力してください。"></textarea>
-        <input type="submit" name="save" value="送信">
+    <form action="/add" method="post" enctype="multipart/form-data">
+        <textarea class="textarea_center" name="tpl_task" id="" cols="70" rows="10" warp="hard" placeholder="こちらに質問内容を入力してください。"></textarea>
+                    <input type="file" name="upload"></br>
+        <input class="input_center" type="submit" name="save" value="送信">
     </form>
 {% endblock %}

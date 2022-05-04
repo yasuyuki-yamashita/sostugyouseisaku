@@ -9,9 +9,17 @@
 </head>
 <body>
     <header>
-        <a href="/list">回答募集ページ</a>
-        <a href="/QAlist">Q&Aリストページ</a>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4">SUNABACO おこまりごと</h1>
+              <p class="lead">SUNABACOの質問&回答ページです</p>
+              <a href="/list">回答募集中ページ</a>
+              <a href="/QAlist">回答済みページ</a>
+            </div>
+          </div>
     </header>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../static/index.js"></script>
 {% block content %}
 {% endblock %}
 <footer>ここはフッターです</footer>

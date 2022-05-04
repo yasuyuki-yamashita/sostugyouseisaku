@@ -1,9 +1,0 @@
-{% extends"base.html" %}
-{% block content %}
-<form action="/edit" method="post">
-    <input type="hidden" value="{{tpl_task['tpl_id']}}" name="task_id">
-    <input type="text" value="{{tpl_task['tpl_task']}}" name="task_input">
-    <input type="submit" name="save" value="編集する">
-    <td width="500" height="100"><a href="/edit/{{item['tpl_id']}}">{{item["tpl_task"]}}</a></td>
-</form>
-{% endblock %}

@@ -1,4 +1,5 @@
 # ★★★★★定型文★★★★★
+import os
 import sqlite3
 from flask import Flask, render_template,request,redirect, session
 import flask
@@ -21,19 +22,42 @@ def add_get():
 def add_post():
     # HTMLから送られてきたデータを取得、変数flaskに格納
     task=request.form.get("tpl_task")
+    upload = request.files['upload']
+    # uploadで取得したファイル名をlower()で全部小文字にして、ファイルの最後尾の拡張子が'.png', '.jpg', '.jpeg'ではない場合、returnさせる。
+    if not upload.filename.lower().endswith(('.png', '.jpg', '.jpeg')):
+        return 'png,jpg,jpeg形式のファイルを選択してください'
+    conn=sqlite3.connect("flask.db")
     # DBにテータを追加
     # DBに接続
     conn=sqlite3.connect("flask.db")
     # SQL文を実行
     c=conn.cursor()
-    # 情報が一個の時は、カンマを入れる
-    c.execute("insert into task values(null,?,?)",(task,0))
+    # 下の def get_save_path()関数を使用して "./static/img/" パスを戻り値として取得する。
+    save_path = get_save_path()
+    # パスが取得できているか確認
+    print(save_path)
+    # ファイルネームをfilename変数に代入
+    filename = upload.filename
+    # 画像ファイルを./static/imgフォルダに保存。 os.path.join()は、パスとファイル名をつないで返してくれます。
+    upload.save(os.path.join(save_path,filename))
+    # ファイル名が取れることを確認、あとで使うよ
+    print(filename)
+    c.execute("insert into task values(null,?,?,?)",(task,0,filename))
     # 情報を書き込み
     conn.commit()
     # DBを閉じる
     c.close()
+
+
+
     # ホームページにリダイレクト
     return redirect("/list")
+
+#課題4の答えはここも
+def get_save_path():
+    path_dir = "./static/img"
+    return path_dir
+
 
 @app.route("/list")
 def list():
@@ -173,42 +197,6 @@ def aanswer_post():
 # ★★★★★★★★★★★★★★★
 
 
-# # ★★★★★編集★★★★★
-# @app.route("/edit/<int:id>")
-# # idを受け取り
-# def edit(id):
-#     # DBに接続
-#     conn=sqlite3.connect("flask.db")
-#     # SQL文を実行
-#     c=conn.cursor()
-#     c.execute("SELECT task FROM task WHERE id=?",(id,))
-#     # DBからデータを取得
-#     task=c.fetchone()
-#     task=task[0]
-#     # DBを閉じる
-#     c.close()
-#     # 配列に格納
-#     item={"tpl_id":id,"tpl_task":task}
-#     return render_template("edit.html",tpl_task=item)
-#     # answer.htmlを作成 idとtaskを受け取り、編集できるようにする
-
-# @app.route("/edit",methods=["POST"])
-# def edit_post():
-#     # htmlから送られてきたidを取得、変数task_idに格納
-#     item_id=request.form.get("task_id")
-#     item_id=int(item_id)
-#     # htmlから送られてきたデータを取得、変数taskに格納
-#     task=request.form.get("task_input")
-#     # DBに接続
-#     conn=sqlite3.connect("flask.db")
-#     # SQL文を実行
-#     c=conn.cursor()
-#     # 受け取った情報をもとにtaskテーブルを書き換えるSQL
-#     c.execute("UPDATE task SET task=? WHERE id=?",(task,item_id))
-#     conn.commit()
-#     c.close()
-#     return redirect("/list")
-# # ★★★★★★★★★★★★★★★
 
 
 # ★★★★★削除★★★★★
