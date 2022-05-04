@@ -1,0 +1,128 @@
+/*.jumbotron {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color: #00bcd4;
+    text-align: center;
+    color: #fff;
+}*/
+/*お花の写真のcssです*/
+.jumbotron {
+    position: relative;  
+    height: 200px;
+    background:#00bcd4;
+  }
+.jumbotron > * {
+    /* 子要素をすべて上下に中央寄せする */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+.jumbotron > p{
+    position: absolute;
+    top: 70%;
+    transform: translateY(-50%);
+
+}
+  
+  .jumbotron > .hana1 {
+    left: 0;
+  }
+  
+  .jumbotron > .hana2 {
+    right: 0;
+  }
+  .jumbotron > h1 {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    color: black;
+  }
+  .jumbotron > p {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    color: black;
+  
+  }
+  
+  
+/* よくある質問 */
+.accordions {
+    margin-bottom: 30px;
+}
+
+.accordion__body + .accordion__title {
+    margin-top: 20px;
+}
+
+.accordion__btn {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    background-color: #00bcd4;
+    border: 2px solid #00bcd4;
+    color: #fff;
+    font-size: 1.6rem;
+    text-align: left;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.accordion__btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: currentColor;
+    transform: translateY(-50%);
+}
+
+.accordion__btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    display: block;
+    width: 2px;
+    height: 20px;
+    background-color: currentColor;
+    transform: translateY(-50%);
+}
+
+.accordion__btn:focus,
+.accordion__btn:hover {
+    background-color: #fff;
+    color: #00bcd4;
+}
+
+.accordion__btn--active::after {
+    content: none;
+}
+
+.accordion__body {
+    display: none;
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+
+.accordion__body > *:last-child {
+    margin-bottom: 0;
+}
+
+.accordion__body--active {
+    display: block;
+}
+
+.accordion__text {
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+}
+
